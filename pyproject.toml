@@ -7,4 +7,4 @@ disable = "C0114,C0115,C0116"
 
 [tool.ruff]
 line-length = 88
-ignore = ["D203"]
+ignore = ["D203", "F401"]
