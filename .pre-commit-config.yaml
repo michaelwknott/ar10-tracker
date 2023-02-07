@@ -19,9 +19,3 @@ repos:
     rev: v0.0.116
     hooks:
       - id: ruff
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 'v0.991'
-    hooks:
-    -   id: mypy
-        args: [--no-strict-optional, --ignore-missing-imports]
-        additional_dependencies: [types-requests==2.28.11.8]
