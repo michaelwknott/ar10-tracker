@@ -8,3 +8,6 @@ disable = "C0114,C0115,C0116"
 [tool.ruff]
 line-length = 88
 ignore = ["D203", "F401"]
+
+[tool.ruff.per-file-ignores]
+"record/migrations/0001_initial.py" = ["E501"]
