@@ -24,8 +24,8 @@ def training_data_new(request):
             training_data = form.save(commit=False)
             training_data.user = request.user
             training_data.save()
-
             messages.success(request, "Added training data")
+
             return redirect("record:training_data_list")
     else:
         form = TrainingDataForm()
@@ -42,6 +42,7 @@ def training_data_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Updated training data")
+
             return redirect("record:training_data_list")
     else:
         form = TrainingDataForm(instance=training_data)
@@ -68,6 +69,7 @@ def competition_data_list(request):
     competition_data = competition_data.filter(user=request.user)
 
     context = {"competition_data": competition_data}
+
     return render(request, "competition/competition_data_list.html", context)
 
 
@@ -81,6 +83,7 @@ def competition_data_new(request):
             competition_data.save()
 
             messages.success(request, "Added competition data")
+
             return redirect("record:competition_data_list")
     else:
         form = CompetitionDataForm()
@@ -96,6 +99,7 @@ def competition_data_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Updated competition data")
+
             return redirect("record:competition_data_list")
     else:
         form = CompetitionDataForm(instance=competition_data)
