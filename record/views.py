@@ -8,6 +8,11 @@ from .models import CompetitionData, TrainingData
 
 
 @login_required
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
+@login_required
 def training_data_list(request):
     training_data = TrainingData.objects.all()
     training_data = training_data.filter(user=request.user)
