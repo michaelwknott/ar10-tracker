@@ -1,0 +1,135 @@
+/* Simple dashboard grid CSS */
+
+/* Assign grid instructions to our parent grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    height: 100vh;
+}
+
+/* Give every child element its grid name */
+.header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background-color: #648ca6;;
+}
+
+/* Mobile-first side nav styles */
+.sidenav {
+    grid-area: sidenav;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    overflow-y: auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    z-index: 2; /* Needs to sit above the hamburger menu icon */
+    background-color: #394263;
+    transform: translateX(-245px);
+    transition: all .6s ease-in-out;
+}
+
+.sidenav_list {
+    padding: 0;
+    margin-top: 85px;
+    list-style-type: none;
+}
+
+.sidenav_list-item {
+    padding: 20px 20px 20px 40px;
+    color: #ddd;
+}
+
+
+.sidenav_list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.main {
+    grid-area: main;
+    background-color: #8fd4d9;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background-color: #648ca6;;
+}
+
+/* Non-mobile styles, 750px breakpoint */
+@media only screen and (min-width: 46.875em) {
+/* Show the sidenav */
+    .grid-container {
+        grid-template-columns: 240px 1fr; /* Show the side nav for non-mobile screens */
+        grid-template-areas:
+        "sidenav header"
+        "sidenav main"
+        "sidenav footer";
+    }
+
+    .sidenav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Hamburger menu icon, stays fixed on mobile for any possible scrolling */
+.menu-icon {
+    position: fixed;
+    display: flex;
+    top: 5px;
+    left: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+    padding: 12px;
+    background-color: #DADAE3;
+}
+
+/* Make room for the menu icon on mobile */
+.header_search {
+  margin-left: 42px;
+}
+
+/* The active class is toggled on hamburger and close icon clicks */
+.sidenav.active {
+    transform: translateX(0);
+}
+
+  /* Only visible on mobile screens */
+  .sidenav_close-icon {
+    position: absolute;
+    visibility: visible;
+    top: 8px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ddd;
+}
+
+/* Non-mobile styles for side nav responsiveness, 750px breakpoint */
+@media only screen and (min-width: 46.875em) {
+  .sidenav {
+    position: relative; /* Fixed position on mobile */
+    transform: translateX(0);
+  }
+
+  .sidenav_close-icon {
+    visibility: hidden;
+  }
+}
