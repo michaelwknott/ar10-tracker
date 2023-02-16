@@ -1,18 +1,75 @@
 <!-- templates/base.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>10m Air Rifle Performance Tracker</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      const menuIconEl = $('.menu-icon');
+      const sidenavEl = $('.sidenav');
+      const sidenavCloseEl = $('.sidenav_close-icon');
 
-</head>
-<body>
+      // Add and remove provided class names
+      function toggleClassName(el, className) {
+        if (el.hasClass(className)) {
+          el.removeClass(className);
+        } else {
+          el.addClass(className);
+        }
+      }
 
-    {% block content %}
-    {% endblock content %}
+      // Open the side nav on click
+      menuIconEl.on('click', function() {
+        toggleClassName(sidenavEl, 'active');
+      });
 
-</body>
+      // Close the side nav on click
+      sidenavCloseEl.on('click', function() {
+        toggleClassName(sidenavEl, 'active');
+      });
+    </script>
+    <div class="grid-container">
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <header class="header">
+        <div class="header_title">10m Air Rifle Performance Monitoring</div>
+        <div class="header_avatar">Your face</div>
+      </header>
+      <aside class = "sidenav">
+        <div class="sidenav_close-icon">
+          <i class="fas fa-times"></i>
+        </div>
+        <ul class="sidenav_list">
+            <li class="sidenav_list-item">
+              <a href="{% url 'record:dashboard' %}">Dashboard</a>
+            </li>
+            <li class="sidenav_list-item">
+              <a href="#">SCATT Records</a>
+            </li>
+            <li class="sidenav_list-item">
+              <a href="#">Competition Records</a>
+            </li>
+            <li class="sidenav_list-item">Item Four</li>
+            <li class="sidenav_list-item">Item Five</li>
+          </ul>
+      </aside>
+      <main class="main">
+      {% block content %}
+      {% endblock content %}
+      </main>
+      <footer class="footer">
+        <div class="footer_copyright">&copy; 2023 MWK</div>
+        <div class="footer_signature">Made with Django</div>
+      </footer>
+    </div>
+  </body>
 </html>
