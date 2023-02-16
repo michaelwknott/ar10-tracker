@@ -1,5 +1,12 @@
-/* Simple dashboard grid CSS */
+/* import font */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
+* {
+    margin:0;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Dashboard grid CSS */
 /* Assign grid instructions to our parent grid container */
 .grid-container {
     display: grid;
@@ -16,6 +23,7 @@
 .header {
     grid-area: header;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;

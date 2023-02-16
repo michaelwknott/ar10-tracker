@@ -1,0 +1,10 @@
+
+#login-page {
+    height:100%;
+    background:#78a7ba;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow:scroll;
+}

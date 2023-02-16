@@ -5,13 +5,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 <div class="main-header">
-    <div class="main-header_heading">
-      {% if user.is_authenticated %}
-      <p>Hello, {{ user.get_username }}.</p>
-      {% else %}
-      <p>Hello</p>
-      {% endif %}
-    </div>
+    <div class="main-header_heading">Hello</div>
     <div class="main-header_updates">Recent Items</div>
 </div>
 <div class="main-overview">

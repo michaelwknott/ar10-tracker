@@ -122,3 +122,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Custom user model
 AUTH_USER_MODEL = "record.CustomUser"
+
+# Registration redirects
+LOGIN_REDIRECT_URL = "record:dashboard"
+LOGOUT_REDIRECT_URL = "record:dashboard"

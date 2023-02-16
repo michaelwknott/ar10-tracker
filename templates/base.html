@@ -41,8 +41,18 @@
         <i class="fas fa-bars"></i>
       </div>
       <header class="header">
-        <div class="header_title">10m Air Rifle Performance Monitoring</div>
-        <div class="header_avatar">Your face</div>
+          {% if user.is_authenticated %}
+            Hello, {{ user.get_username }}
+          {% else %}
+            Hello, User
+          {% endif %}
+        <div class="header_login">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Log out.</a>
+            {% else %}
+              <a href="{% url 'login' %}">Please log in.</a>
+            {% endif %}
+        </div>
       </header>
       <aside class = "sidenav">
         <div class="sidenav_close-icon">
