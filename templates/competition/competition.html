@@ -1,0 +1,14 @@
+<!-- templates/competition/competition.html -->
+{% extends 'base.html' %}
+
+{% block title %}Competition Data{% endblock title %}
+
+{% block content %}
+<h2>Add Competition Record</h2>
+<br>
+<form action="{% url 'record:competition_data_new' %}" method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+<button class="#" type="submit">Submit</button>
+{% endblock content %}

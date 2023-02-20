@@ -16,13 +16,8 @@ class CutomUserChangeForm(UserChangeForm):
         fields = ("email",)
 
 
-class TrainingDataForm(ModelForm):
-    class Meta:
-        model = TrainingData
-        fields = "__all__"
-
-
 class CompetitionDataForm(ModelForm):
     class Meta:
         model = CompetitionData
+        exclude = ("user",)
         fields = "__all__"
