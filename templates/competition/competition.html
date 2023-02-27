@@ -5,10 +5,9 @@
 
 {% block content %}
 <h2>Add Competition Record</h2>
-<br>
-<form action="{% url 'record:competition_data_new' %}" method="post" class="form">
+<form action="{% url 'record:competition_data_new' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <input type="submit" value="save">
 </form>
-<button class="#" type="submit">Submit</button>
 {% endblock content %}

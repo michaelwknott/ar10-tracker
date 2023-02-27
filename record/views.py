@@ -1,15 +1,72 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CompetitionDataForm
+from .forms import CompetitionDataForm, TrainingDataForm
 from .models import CompetitionData, TrainingData
 
 
 @login_required
 def dashboard(request):
-    return render(request, "dashboard.html")
+    competition_data = CompetitionData.objects.all()
+    training_data = TrainingData.objects.all()
+    training_data_avgs = TrainingData.objects.aggregate(
+        Avg("ten_zero"),
+        Avg("ten_azero"),
+        Avg("ten_five"),
+        Avg("ten_afive"),
+        Avg("aiming_time"),
+        Avg("s1"),
+        Avg("s2"),
+        Avg("da"),
+    )
+
+    comp_dates = []
+    qual_scores = []
+
+    training_dates = []
+    training_scores = []
+    ten_zeros = []
+    ten_azeros = []
+    ten_fives = []
+    ten_afives = []
+
+    for competition in competition_data:
+        comp_date = competition.date_time.strftime("%Y.%m.%d")
+        qual_score = competition.qual_score
+
+        comp_dates.append(comp_date)
+        qual_scores.append(qual_score)
+
+    for training in training_data:
+        training_date = training.date_time.strftime("%Y.%m.%d")
+        training_score = training.score
+        ten_five = training.ten_five
+        ten_afive = training.ten_afive
+        ten_zero = training.ten_zero
+        ten_azero = training.ten_azero
+
+        training_dates.append(training_date)
+        training_scores.append(training_score)
+        ten_zeros.append(ten_zero)
+        ten_azeros.append(ten_azero)
+        ten_fives.append(ten_five)
+        ten_afives.append(ten_afive)
+
+    context = {
+        "training_data_avgs": training_data_avgs,
+        "comp_dates": comp_dates,
+        "qual_scores": qual_scores,
+        "training_dates": training_dates,
+        "training_scores": training_scores,
+        "ten_azeros": ten_azeros,
+        "ten_zeros": ten_zeros,
+        "ten_afives": ten_afives,
+        "ten_fives": ten_fives,
+    }
+    return render(request, "dashboard.html", context=context)
 
 
 @login_required
