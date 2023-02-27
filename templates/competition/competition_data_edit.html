@@ -1,0 +1,17 @@
+<!-- templates/competition/competition_data_edit.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Competition Data{% endblock title %}
+
+{% block content %}
+<form action="{% url 'record:competition_data_edit' pk=competition_data.pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+<button
+class="#"
+type="submit">
+Submit
+</button>
+{% endblock content %}
+Footer

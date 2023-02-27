@@ -3,32 +3,342 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-<div class="main-header">
-    <div class="main-header_heading">Hello</div>
-    <div class="main-header_updates">Recent Items</div>
+<section class="custom-overview">
+  <div class="container-fluid mt-2 h-100 d-flex">
+
+    <div class="row h-25 align-items-center" style="border:1px solid red;">
+      <div class="col">
+        {% if user.is_authenticated %}
+        <p class="lead">Hello, {{ user.get_username }}</p>
+        {% else %}
+        <p class="lead">Hello, User. Please Log In</p>
+        {% endif %}
+      </div>
+    </div>
+</section>
+
+<section class"custom-score-overview">
+  <div class="container-fluid mt-2">
+    <div class="row" style="border:1px solid red;">
+      <div class="col">
+        <div class="card" style="width: 10rem;">
+          <div class="card-body">
+            <h5 class="card-title">10.0</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{ training_data_avgs.ten_zero }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 10rem;">
+          <div class="card-body">
+            <h5 class="card-title">10a.0</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 10rem;">
+          <div class="card-body">
+            <h5 class="card-title">10.5</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{ training_data_avgs.ten_five }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 10rem;">
+          <div class="card-body">
+            <h5 class="card-title">10a.5</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="score-charts">
+  <div class="container-fluid mt-4">
+    <div class="row" style="border:1px solid red;">
+      <div class="col">
+          <canvas id="trainingScores"></canvas>
+      </div>
+      <div class="col">
+          <canvas id="compScores"></canvas>
+      </div>
+
+      <script>
+        const data = {
+            labels: [{% for training_date in training_dates %}"{{ training_date }}",{% endfor %}],
+                datasets: [{
+                    label: "Scores",
+                    data: [{% for training_score in training_scores %}{{ training_score}},{% endfor %}],
+                    backgroundColor: ['rgba(7, 7, 7, 1)'],
+                    borderColor: ['rgba(7, 7, 7, 1)'],
+                    borderWidth: 3
+                },
+              ]
+        };
+
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                      position: 'bottom',
+                    },
+                    title: {
+                      display: true,
+                      text: 'Training Scores'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const trainingScores = new Chart(document.getElementById('trainingScores'), config);
+
+
+    const data2 = {
+        labels: [{% for comp_date in comp_dates %}"{{ comp_date }}",{% endfor %}],
+            datasets: [{
+                label: "Scores",
+                data: [{% for comp_score in comp_scores %}{{ comp_score }},{% endfor %}],
+                backgroundColor: ['rgba(7, 7, 7, 1)'],
+                borderColor: ['rgba(7, 7, 7, 1)'],
+                borderWidth: 3
+            },
+          ]
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                  position: 'bottom',
+                },
+                title: {
+                  display: true,
+                  text: 'Competition Scores'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    const compScores = new Chart(document.getElementById('compScores'), config2);
+  </script>
+  </div>
+  </div>
+  </section>
+
+</section>
+
+<section class="custom-scatt-overview">
+  <div class="container-fluid mt-4">
+    <div class="row" style="border:1px solid red;">
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">10.0</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.ten_zero }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">10a.0</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">10.5</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.ten_five }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">10a.5</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">T</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Aiming Time</h6>
+              <p class="card-text">{{ training_data_avgs.aiming_time }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">S1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Trace</h6>
+              <p class="card-text">{{ training_data_avgs.s1 }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">S2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.s2 }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 10rem;">
+            <div class="card-body">
+              <h5 class="card-title">DA</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">{{ training_data_avgs.da }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+ </div>
+</section>
+
+<section class="training-charts">
+<div class="container-fluid mt-4">
+  <div class="row" style="border:1px solid red;">
+    <div class="col">
+        <canvas id="scatt1"></canvas>
+    </div>
+    <div class="col">
+        <canvas id="scatt2"></canvas>
+    </div>
+
+    <script>
+      const data3 = {
+          labels: [{% for training_date in training_dates %}"{{ training_date }}",{% endfor %}],
+              datasets: [{
+                  label: "10a0",
+                  data: [{% for ten_azero in ten_azeros %}{{ ten_azero }},{% endfor %}],
+                  backgroundColor: ['rgba(7, 7, 7, 1)'],
+                  borderColor: ['rgba(7, 7, 7, 1)'],
+                  borderWidth: 3
+              },
+              {
+                  label: "10a5",
+                  data: [{% for ten_afive in ten_afives %}{{ ten_afive }},{% endfor %}],
+                  backgroundColor: ['rgba(7, 7, 7, 0.33)'],
+                  borderColor: ['rgba(7, 7, 7, 0.33)'],
+                  borderDash: [5, 5],
+                  borderWidth: 3
+              }]
+      };
+
+      const config3 = {
+          type: 'line',
+          data: data3,
+          options: {
+              responsive: true,
+              plugins: {
+                  legend: {
+                    position: 'bottom',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Stability of Hold'
+                  }
+              },
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      };
+
+      const scatt1 = new Chart(document.getElementById('scatt1'), config);
+
+
+  const data4 = {
+      labels: [{% for training_date in training_dates %}"{{ training_date }}",{% endfor %}],
+          datasets: [{
+              label: "10.0",
+              data: [{% for ten_zero in ten_zeros %}{{ ten_zero }},{% endfor %}],
+              backgroundColor: ['rgba(7, 7, 7, 1)'],
+              borderColor: ['rgba(7, 7, 7, 1)'],
+              borderWidth: 3
+          },
+          {
+              label: "10.5",
+              data: [{% for ten_five in ten_fives %}{{ ten_five }},{% endfor %}],
+              backgroundColor: ['rgba(7, 7, 7, 0.33)'],
+              borderColor: ['rgba(7, 7, 7, 0.33)'],
+              borderDash: [5, 5],
+              borderWidth: 3
+          }]
+  };
+
+  const config4 = {
+      type: 'line',
+      data: data4,
+      options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                position: 'bottom',
+              },
+              title: {
+                display: true,
+                text: 'Aiming Accuracy'
+              }
+          },
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  };
+
+  const scatt2 = new Chart(document.getElementById('scatt2'), config2);
+</script>
 </div>
-<div class="main-overview">
-    <div class="overviewcard">
-      <div class="overviewcard_icon">Overview</div>
-      <div class="overviewcard_info">Card</div>
-    </div>
-    <div class="overviewcard">
-      <div class="overviewcard_icon">Overview</div>
-      <div class="overviewcard_info">Card</div>
-    </div>
-    <div class="overviewcard">
-      <div class="overviewcard_icon">Overview</div>
-      <div class="overviewcard_info">Card</div>
-    </div>
-    <div class="overviewcard">
-      <div class="overviewcard_icon">Overview</div>
-      <div class="overviewcard_info">Card</div>
-    </div>
-  </div>
-  <div class="main-cards">
-    <div class="card">Card</div>
-    <div class="card">Card</div>
-    <div class="card">Card</div>
-  </div>
+</div>
+</section>
 {% endblock %}
