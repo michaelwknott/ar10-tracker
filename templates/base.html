@@ -28,7 +28,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-              <a href="#" class="nav-item nav-link active">
+              <a href="{% url 'record:dashboard' %}" class="nav-item nav-link active">
                 <i class="bi-bar-chart me-1"></i>Dashboard
               </a>
               <div class="nav-item dropdown">
@@ -36,8 +36,8 @@
                   <i class="bi-trophy me-1"></i>Competition
                 </a>
                 <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item">Add Competition Data</a>
-                  <a href="#" class="dropdown-item">Edit Competition Data</a>
+                  <a href="{% url 'record:competition_data_new' %}" class="dropdown-item">Add Competition Data</a>
+                  <a href="{% url 'record:competition_data_list' %}" class="dropdown-item">View Competition Data</a>
                   </div>
               </div>
               <div class="nav-item dropdown">

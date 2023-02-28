@@ -4,14 +4,12 @@
 {% block title %}Edit Competition Data{% endblock title %}
 
 {% block content %}
-<form action="{% url 'record:competition_data_edit' pk=competition_data.pk %}" method="post">
+<div>
+    <h2>Edit Competition Data</h2>
+<form  method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Save">
+    <a type="button" class="btn" href="{% url 'record:competition_data_list' %}">Cancel</a>
 </form>
-<button
-class="#"
-type="submit">
-Submit
-</button>
-{% endblock content %}
-Footer
+{% endblock %}

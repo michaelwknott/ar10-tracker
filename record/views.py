@@ -176,7 +176,14 @@ def competition_data_edit(request, pk):
 @login_required
 def competition_data_delete(request, pk):
     competition_data = get_object_or_404(CompetitionData, pk=pk, user=request.user)
-    competition_data.delete()
-    messages.success(request, "Deleted competition data")
 
-    return HttpResponse(status=200)
+    if request.method == "POST":
+        competition_data.delete()
+        messages.success(request, "Deleted competition data")
+        return redirect("record:competition_data_list")
+
+    render(
+        request,
+        "competition/competition_data_confirm_delete.html",
+        {"competition_data": competition_data},
+    )
