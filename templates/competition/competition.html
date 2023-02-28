@@ -8,6 +8,7 @@
 <form action="{% url 'record:competition_data_new' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="save">
+    <input class="btn btn-primary" type="submit" value="Save">
+    <a type="button" class="btn" href="{% url 'record:competition_data_list' %}">Go back</a>
 </form>
 {% endblock content %}
