@@ -22,22 +22,21 @@ def __str__(self):
 class CompetitionData(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
     competition_name = models.CharField(max_length=100)
-    date_time = models.DateTimeField()
+    date = models.DateField()
     match_number = models.PositiveSmallIntegerField()
     qual_score = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        date = self.date_time.date()
-        return f"{self.user}: {self.competition_name}, {self.match_number}, {date}"
+        return f"{self.user}: {self.competition_name}, {self.match_number}, {self.date}"
 
     class Meta:
         verbose_name_plural = "competition data"
-        ordering = ["date_time"]
+        ordering = ["date"]
 
 
 class TrainingData(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
-    date_time = models.DateTimeField()
+    date = models.DateField()
     number_shots = models.PositiveSmallIntegerField("Number of shots completed")
     score = models.DecimalField(max_digits=5, decimal_places=2)
     target_distance = models.DecimalField(max_digits=10, decimal_places=1)
@@ -53,9 +52,10 @@ class TrainingData(models.Model):
     da = models.DecimalField("DA", max_digits=10, decimal_places=1)
 
     def __str__(self):
-        date = self.date_time.date()
-        return f"{self.user}: {self.number_shots} training match completed on {date}"
+        return (
+            f"{self.user}: {self.number_shots} training match completed on {self.date}"
+        )
 
     class Meta:
         verbose_name_plural = "training data"
-        ordering = ["date_time"]
+        ordering = ["date"]

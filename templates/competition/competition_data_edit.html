@@ -1,14 +1,45 @@
 <!-- templates/competition/competition_data_edit.html -->
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Edit Competition Data{% endblock title %}
 
 {% block content %}
-<div>
-    <h2>Edit Competition Data</h2>
+<div class="container">
+    <h6 class="mt-4 display-6">Edit Competition Data</h2>
 <form  method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.non_field_errors }}
+    <div class="row mt-3">
+        {{ form.subject.errors }}
+        <label for="{{ form.competition_name.id_for_label }}" class="col-sm-2 col-form-label">Competition Name:</label>
+        <div class="col-sm-8">
+        {{ form.competition_name|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="row mt-3">
+        {{ form.subject.errors }}
+        <label for="{{ form.date.id_for_label }}" class="col-sm-2 col-form-label">Competition Date:</label>
+        <div class="col-sm-8">
+        {{ form.date|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="row mt-3">
+        {{ form.subject.errors }}
+        <label for="{{ form.match_number.id_for_label }}" class="col-sm-2 col-form-label">Match Number:</label>
+
+        <div class="col-sm-8">
+        {{ form.match_number|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="row mt-3 mb-4">
+        {{ form.subject.errors }}
+        <label for="{{ form.qual_score.id_for_label }}" class="col-sm-2 col-form-label">Qualification Score:</label>
+
+        <div class="col-sm-8">
+        {{ form.qual_score|add_class:"form-control" }}
+        </div>
+    </div>
     <input class="btn btn-primary" type="submit" value="Save">
     <a type="button" class="btn" href="{% url 'record:competition_data_list' %}">Cancel</a>
 </form>

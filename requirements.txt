@@ -12,6 +12,8 @@ django==4.1.6
     # via
     #   -r requirements.in
     #   dj-database-url
+django-widget-tweaks==1.4.12
+    # via -r requirements.in
 psycopg2==2.9.5
     # via -r requirements.in
 python-decouple==3.7
