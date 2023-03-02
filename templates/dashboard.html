@@ -4,9 +4,9 @@
 
 {% block content %}
 <section class="custom-overview">
-  <div class="container-fluid mt-2 h-100 d-flex">
+  <div class="container mt-2 h-100 d-flex">
 
-    <div class="row h-25 align-items-center" style="border:1px solid red;">
+    <div class="row h-25 align-items-center">
       <div class="col">
         {% if user.is_authenticated %}
         <p class="lead">Hello, {{ user.get_username }}</p>
@@ -18,10 +18,10 @@
 </section>
 
 <section class"custom-score-overview">
-  <div class="container-fluid mt-2">
-    <div class="row" style="border:1px solid red;">
+  <div class="container mt-2">
+    <div class="row">
       <div class="col">
-        <div class="card" style="width: 10rem;">
+        <div class="card" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">10.0</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="col">
-        <div class="card" style="width: 10rem;">
+        <div class="card" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">10a.0</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="col">
-        <div class="card" style="width: 10rem;">
+        <div class="card" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">10.5</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="col">
-        <div class="card" style="width: 10rem;">
+        <div class="card" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">10a.5</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -63,8 +63,8 @@
 </section>
 
 <section class="score-charts">
-  <div class="container-fluid mt-4">
-    <div class="row" style="border:1px solid red;">
+  <div class="container mt-4">
+    <div class="row">
       <div class="col">
           <canvas id="trainingScores"></canvas>
       </div>
@@ -153,10 +153,10 @@
 </section>
 
 <section class="custom-scatt-overview">
-  <div class="container-fluid mt-4">
-    <div class="row" style="border:1px solid red;">
+  <div class="container mt-4">
+    <div class="row">
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10.0</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -166,7 +166,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10a.0</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -176,7 +176,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10.5</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -186,7 +186,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10a.5</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -196,7 +196,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">T</h5>
               <h6 class="card-subtitle mb-2 text-muted">Aiming Time</h6>
@@ -206,7 +206,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">S1</h5>
               <h6 class="card-subtitle mb-2 text-muted">Trace</h6>
@@ -216,7 +216,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">S2</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -226,7 +226,7 @@
         </div>
 
         <div class="col">
-          <div class="card" style="width: 10rem;">
+          <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">DA</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -241,8 +241,8 @@
 </section>
 
 <section class="training-charts">
-<div class="container-fluid mt-4">
-  <div class="row" style="border:1px solid red;">
+<div class="container mt-4">
+  <div class="row">
     <div class="col">
         <canvas id="scatt1"></canvas>
     </div>
@@ -292,7 +292,7 @@
           }
       };
 
-      const scatt1 = new Chart(document.getElementById('scatt1'), config);
+      const scatt1 = new Chart(document.getElementById('scatt1'), config3);
 
 
   const data4 = {
@@ -336,7 +336,7 @@
       }
   };
 
-  const scatt2 = new Chart(document.getElementById('scatt2'), config2);
+  const scatt2 = new Chart(document.getElementById('scatt2'), config4);
 </script>
 </div>
 </div>

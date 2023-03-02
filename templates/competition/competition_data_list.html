@@ -4,28 +4,30 @@
 {% block title %}Competition Data{% endblock title %}
 
 {% block content %}
-<div id="competition_data_list">
-    <h1>Competition Results</h1>
-    <table class="table">
+<div class="container">
+    <h6 class="mt-4 display-6">Competition Results</h6>
+    <table class="table table-borderless mt-3">
         <thead>
             <tr>
                 <th scope="col">Competition</th>
                 <th scope="col">Date</th>
                 <th scope="col">Match Number</th>
                 <th scope="col">Qualification Score</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
 
-        <tbody id="competition_data" hx-confirm="Are you sure you want to delete?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+        <tbody>
             {% for data in competition_data %}
             <tr>
                 <td>{{ data.competition_name }}</td>
-                <td>{{ data.date_time }}</td>
+                <td>{{ data.date }}</td>
                 <td>{{ data.match_number }}</td>
                 <td>{{ data.qual_score }}</td>
                 {% if data.user == request.user %}
-                <td><a class="#" href="{% url 'record:competition_data_edit' pk=data.pk %}" role="button">Edit</a></td>
-                <td><a class="#" href="{% url 'record:competition_data_delete' pk=data.pk %}" role="button">Delete</a></td>
+                <td><a type="button" class="btn" href="{% url 'record:competition_data_edit' pk=data.pk %}" role="button">Edit  </a></td>
+                <td><a type="button" class="btn" href="{% url 'record:competition_data_delete' pk=data.pk %}" role="button">Delete</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

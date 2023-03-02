@@ -34,14 +34,14 @@ def dashboard(request):
     ten_afives = []
 
     for competition in competition_data:
-        comp_date = competition.date_time.strftime("%Y.%m.%d")
+        comp_date = competition.date.strftime("%Y.%m.%d")
         qual_score = competition.qual_score
 
         comp_dates.append(comp_date)
         qual_scores.append(qual_score)
 
     for training in training_data:
-        training_date = training.date_time.strftime("%Y.%m.%d")
+        training_date = training.date.strftime("%Y.%m.%d")
         training_score = training.score
         ten_five = training.ten_five
         ten_afive = training.ten_afive
@@ -182,8 +182,8 @@ def competition_data_delete(request, pk):
         messages.success(request, "Deleted competition data")
         return redirect("record:competition_data_list")
 
-    render(
+    return render(
         request,
-        "competition/competition_data_confirm_delete.html",
+        "competition/competition_data_delete.html",
         {"competition_data": competition_data},
     )
