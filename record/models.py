@@ -42,7 +42,6 @@ class TrainingData(models.Model):
     target_distance = models.DecimalField(max_digits=10, decimal_places=1)
     f_coefficient = models.PositiveSmallIntegerField("Ballistic 'F' coefficient")
     aiming_time = models.DecimalField("T", max_digits=10, decimal_places=1)
-    score_decimal = models.DecimalField("R", max_digits=10, decimal_places=2)
     ten_zero = models.PositiveSmallIntegerField("10.0")
     ten_azero = models.PositiveSmallIntegerField("10a0")
     ten_five = models.PositiveSmallIntegerField("10.5")

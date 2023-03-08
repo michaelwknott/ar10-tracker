@@ -11,21 +11,21 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
     <div class="row mt-3">
-        {{ form.subject.errors }}
+        {{ form.competition_name.errors }}
         <label for="{{ form.competition_name.id_for_label }}" class="col-sm-2 col-form-label">Competition Name:</label>
         <div class="col-sm-8">
         {{ form.competition_name|add_class:"form-control" }}
         </div>
     </div>
     <div class="row mt-3">
-        {{ form.subject.errors }}
+        {{ form.date.errors }}
         <label for="{{ form.date.id_for_label }}" class="col-sm-2 col-form-label">Competition Date:</label>
         <div class="col-sm-8">
         {{ form.date|add_class:"form-control" }}
         </div>
     </div>
     <div class="row mt-3">
-        {{ form.subject.errors }}
+        {{ form.match_number.errors }}
         <label for="{{ form.match_number.id_for_label }}" class="col-sm-2 col-form-label">Match Number:</label>
 
         <div class="col-sm-8">
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="row mt-3 mb-4">
-        {{ form.subject.errors }}
+        {{ form.qual_score.errors }}
         <label for="{{ form.qual_score.id_for_label }}" class="col-sm-2 col-form-label">Qualification Score:</label>
 
         <div class="col-sm-8">

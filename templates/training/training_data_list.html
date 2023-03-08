@@ -1,0 +1,53 @@
+<!-- templates/training/training_data_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Training Data{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h6 class="mt-4 display-6">Training Results</h6>
+    <table class="table table-borderless mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Number of Shots</th>
+                <th scope="col">Live Score</th>
+                <th scope="col">Target Distance</th>
+                <th scope="col">F co-efficient</th>
+                <th scope="col">T</th>
+                <th scope="col">10.0</th>
+                <th scope="col">10a.0</th>
+                <th scope="col">10.5</th>
+                <th scope="col">10a.5</th>
+                <th scope="col">S1</th>
+                <th scope="col">S2</th>
+                <th scope="col">DA</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for data in training_data %}
+            <tr>
+                <td>{{ data.date }}</td>
+                <td>{{ data.number_shots }}</td>
+                <td>{{ data.score }}</td>
+                <td>{{ data.target_distance }}</td>
+                <td>{{ data.f_coefficient }}</td>
+                <td>{{ data.aiming_time }}</td>
+                <td>{{ data.ten_zero }}</td>
+                <td>{{ data.ten_azero }}</td>
+                <td>{{ data.ten_five }}</td>
+                <td>{{ data.ten_afive }}</td>
+                <td>{{ data.s1 }}</td>
+                <td>{{ data.s2 }}</td>
+                <td>{{ data.da }}</td>
+                {% if data.user == request.user %}
+                <td><a type="button" class="btn" href="{% url 'record:training_data_edit' pk=data.pk %}" role="button">Edit  </a></td>
+                <td><a type="button" class="btn" href="{% url 'record:training_data_delete' pk=data.pk %}" role="button">Delete</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
