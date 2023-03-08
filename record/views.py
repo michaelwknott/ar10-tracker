@@ -86,13 +86,14 @@ def training_data_new(request):
             training_data = form.save(commit=False)
             training_data.user = request.user
             training_data.save()
+
             messages.success(request, "Added training data")
 
             return redirect("record:training_data_list")
     else:
         form = TrainingDataForm()
 
-    return render(request, "training/training_data.html", {"form": form})
+    return render(request, "training/training.html", {"form": form})
 
 
 @login_required
@@ -119,10 +120,17 @@ def training_data_edit(request, pk):
 @login_required
 def training_data_delete(request, pk):
     training_data = get_object_or_404(TrainingData, pk=pk, user=request.user)
-    training_data.delete()
-    messages.success(request, "Deleted training data")
 
-    return HttpResponse(status=200)
+    if request.method == "POST":
+        training_data.delete()
+        messages.success(request, "Deleted competition data")
+        return redirect("record:training_data_list")
+
+    return render(
+        request,
+        "training/training_data_delete.html",
+        {"training_data": training_data},
+    )
 
 
 @login_required

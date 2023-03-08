@@ -1,0 +1,13 @@
+<!-- templates/training/training_data_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h6 class="mt-4 mb-3 display-6">Are you sure you want to delete this item?</h6>
+<form method="POST">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a type="button" class="btn" href="{% url 'record:training_data_list' %}">Go back</a>
+</form>
+</div>
+{% endblock %}
