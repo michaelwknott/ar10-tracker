@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
-from django.http import HttpResponse
+from django.db.models import Avg, Max
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CompetitionDataForm, TrainingDataForm
@@ -10,8 +9,38 @@ from .models import CompetitionData, TrainingData
 
 @login_required
 def dashboard(request):
+    # Competition data
     competition_data = CompetitionData.objects.all()
+
+    # get personal best score from competition data
+    comp_pb = CompetitionData.objects.aggregate(Max("qual_score"))
+
+    # get average of top 3 scores from competition data
+    comp_top3 = CompetitionData.objects.order_by("qual_score")[:3]
+    comp_top3_avg = comp_top3.aggregate(Avg("qual_score"))
+
+    # get individual dates and scores from competition data queryset
+    comp_dates = []
+    qual_scores = []
+
+    for competition in competition_data:
+        comp_date = competition.date.strftime("%Y.%m.%d")
+        qual_score = competition.qual_score
+
+        comp_dates.append(comp_date)
+        qual_scores.append(qual_score)
+
+    # Training data
     training_data = TrainingData.objects.all()
+
+    # get personal best score from training data
+    training_pb = TrainingData.objects.aggregate(Max("score"))
+
+    # get average of top 3 scores from training data
+    training_top3 = TrainingData.objects.order_by("score")[:3]
+    training_top3_avg = training_top3.aggregate(Avg("score"))
+
+    # get average of all training data fileds
     training_data_avgs = TrainingData.objects.aggregate(
         Avg("ten_zero"),
         Avg("ten_azero"),
@@ -23,22 +52,13 @@ def dashboard(request):
         Avg("da"),
     )
 
-    comp_dates = []
-    qual_scores = []
-
+    # get individual metrics from training data queryset
     training_dates = []
     training_scores = []
     ten_zeros = []
     ten_azeros = []
     ten_fives = []
     ten_afives = []
-
-    for competition in competition_data:
-        comp_date = competition.date.strftime("%Y.%m.%d")
-        qual_score = competition.qual_score
-
-        comp_dates.append(comp_date)
-        qual_scores.append(qual_score)
 
     for training in training_data:
         training_date = training.date.strftime("%Y.%m.%d")
@@ -65,6 +85,10 @@ def dashboard(request):
         "ten_zeros": ten_zeros,
         "ten_afives": ten_afives,
         "ten_fives": ten_fives,
+        "comp_top3_avg": comp_top3_avg,
+        "comp_pb": comp_pb,
+        "training_top3_avg": training_top3_avg,
+        "training_pb": training_pb,
     }
     return render(request, "dashboard.html", context=context)
 
