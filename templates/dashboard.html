@@ -21,41 +21,41 @@
   <div class="container mt-2">
     <div class="row">
       <div class="col">
-        <div class="card" style="width: 8rem;">
+        <h1 class="h4 text-muted mb-3">Training Scores</h1>
+      </div>
+      <div class="col">
+        <h1 class="h4 text-muted md-3">Competition Scores</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-start">
+        <div class="card me-3" style="width: 8rem;">
           <div class="card-body">
-            <h5 class="card-title">10.0</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">{{ training_data_avgs.ten_zero }}</p>
+            <h5 class="card-title">PB</h5>
+            <p class="card-text">{{ training_pb.score__max }}</p>
+          </div>
+        </div>
+
+        <div class="card ms-3" style="width: 8rem;">
+          <div class="card-body">
+            <h5 class="card-title">Avg. Top 3</h5>
+            <p class="card-text">{{ training_top3_avg.score__avg|floatformat:2 }}</p>
           </div>
         </div>
       </div>
 
-      <div class="col">
-        <div class="card" style="width: 8rem;">
+      <div class="col d-flex justify-content-start">
+        <div class="card me-3" style="width: 8rem;">
           <div class="card-body">
-            <h5 class="card-title">10a.0</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+            <h5 class="card-title">PB</h5>
+            <p class="card-text">{{ comp_pb.score__max }}</p>
           </div>
         </div>
-      </div>
 
-      <div class="col">
-        <div class="card" style="width: 8rem;">
+        <div class="card ms-3" style="width: 8rem;">
           <div class="card-body">
-            <h5 class="card-title">10.5</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">{{ training_data_avgs.ten_five }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card" style="width: 8rem;">
-          <div class="card-body">
-            <h5 class="card-title">10a.5</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+            <h5 class="card-title">Avg. Top 3</h5>
+            <p class="card-text">{{ comp_top3_avg.score__avg|floatformat:2 }}</p>
           </div>
         </div>
       </div>
@@ -93,9 +93,10 @@
                 plugins: {
                     legend: {
                       position: 'bottom',
+                      display: false,
                     },
                     title: {
-                      display: true,
+                      display: false,
                       text: 'Training Scores'
                     }
                 },
@@ -130,9 +131,10 @@
             plugins: {
                 legend: {
                   position: 'bottom',
+                  display: false,
                 },
                 title: {
-                  display: true,
+                  display: false,
                   text: 'Competition Scores'
                 }
             },
@@ -155,12 +157,16 @@
 <section class="custom-scatt-overview">
   <div class="container mt-4">
     <div class="row">
+      <div class="col">
+        <h1 class="h4 text-muted mb-3">SCATT</h1>
+    </div>
+    <div class="row">
         <div class="col">
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10.0</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_zero }}</p>
+              <p class="card-text">{{ training_data_avgs.ten_zero__avg }} %</p>
             </div>
           </div>
         </div>
@@ -170,7 +176,7 @@
             <div class="card-body">
               <h5 class="card-title">10a.0</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+              <p class="card-text">{{ training_data_avgs.ten_azero__avg }} %</p>
             </div>
           </div>
         </div>
@@ -180,7 +186,7 @@
             <div class="card-body">
               <h5 class="card-title">10.5</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_five }}</p>
+              <p class="card-text">{{ training_data_avgs.ten_five__avg }} %</p>
             </div>
           </div>
         </div>
@@ -190,7 +196,7 @@
             <div class="card-body">
               <h5 class="card-title">10a.5</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_azero }}</p>
+              <p class="card-text">{{ training_data_avgs.ten_azero__avg }} %</p>
             </div>
           </div>
         </div>
@@ -200,7 +206,7 @@
             <div class="card-body">
               <h5 class="card-title">T</h5>
               <h6 class="card-subtitle mb-2 text-muted">Aiming Time</h6>
-              <p class="card-text">{{ training_data_avgs.aiming_time }}</p>
+              <p class="card-text">{{ training_data_avgs.aiming_time__avg|floatformat:2 }}</p>
             </div>
           </div>
         </div>
@@ -210,7 +216,7 @@
             <div class="card-body">
               <h5 class="card-title">S1</h5>
               <h6 class="card-subtitle mb-2 text-muted">Trace</h6>
-              <p class="card-text">{{ training_data_avgs.s1 }}</p>
+              <p class="card-text">{{ training_data_avgs.s1__avg|floatformat:2 }}</p>
             </div>
           </div>
         </div>
@@ -220,7 +226,7 @@
             <div class="card-body">
               <h5 class="card-title">S2</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.s2 }}</p>
+              <p class="card-text">{{ training_data_avgs.s2__avg|floatformat:2 }}</p>
             </div>
           </div>
         </div>
@@ -230,7 +236,7 @@
             <div class="card-body">
               <h5 class="card-title">DA</h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.da }}</p>
+              <p class="card-text">{{ training_data_avgs.da__avg|floatformat:2 }}</p>
             </div>
           </div>
         </div>
