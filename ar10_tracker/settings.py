@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "widget_tweaks",
+    "import_export",
     "record",
 ]
 
@@ -136,3 +137,6 @@ MESSAGE_TAGS = {
     message_constants.WARNING: "warning",
     message_constants.ERROR: "danger",
 }
+
+# django-import-export
+IMPORT_EXPORT_USE_TRANSACTIONS = True

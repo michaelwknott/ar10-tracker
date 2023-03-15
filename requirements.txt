@@ -6,17 +6,40 @@
 #
 asgiref==3.6.0
     # via django
+defusedxml==0.7.1
+    # via odfpy
+diff-match-patch==20200713
+    # via django-import-export
 dj-database-url==1.2.0
     # via -r requirements.in
 django==4.1.6
     # via
     #   -r requirements.in
     #   dj-database-url
+    #   django-import-export
+django-import-export==3.1.0
+    # via -r requirements.in
 django-widget-tweaks==1.4.12
     # via -r requirements.in
+et-xmlfile==1.1.0
+    # via openpyxl
+markuppy==1.14
+    # via tablib
+odfpy==1.4.1
+    # via tablib
+openpyxl==3.1.2
+    # via tablib
 psycopg2==2.9.5
     # via -r requirements.in
 python-decouple==3.7
     # via -r requirements.in
+pyyaml==6.0
+    # via tablib
 sqlparse==0.4.3
     # via django
+tablib[html,ods,xls,xlsx,yaml]==3.3.0
+    # via django-import-export
+xlrd==2.0.1
+    # via tablib
+xlwt==1.3.0
+    # via tablib
