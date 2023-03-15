@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
 from pathlib import Path
 
 import dj_database_url
 from decouple import Csv, config
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,3 +127,12 @@ AUTH_USER_MODEL = "record.CustomUser"
 # Registration redirects
 LOGIN_REDIRECT_URL = "record:dashboard"
 LOGOUT_REDIRECT_URL = "record:dashboard"
+
+# Messages
+MESSAGE_TAGS = {
+    message_constants.DEBUG: "debug",
+    message_constants.INFO: "info",
+    message_constants.SUCCESS: "success",
+    message_constants.WARNING: "warning",
+    message_constants.ERROR: "danger",
+}

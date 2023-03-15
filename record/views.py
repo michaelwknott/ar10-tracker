@@ -147,7 +147,7 @@ def training_data_delete(request, pk):
 
     if request.method == "POST":
         training_data.delete()
-        messages.success(request, "Deleted competition data")
+        messages.error(request, "Deleted competition data")
         return redirect("record:training_data_list")
 
     return render(
@@ -211,7 +211,7 @@ def competition_data_delete(request, pk):
 
     if request.method == "POST":
         competition_data.delete()
-        messages.success(request, "Deleted competition data")
+        messages.error(request, "Deleted competition data")
         return redirect("record:competition_data_list")
 
     return render(
