@@ -48,14 +48,14 @@
         <div class="card me-3" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">PB</h5>
-            <p class="card-text">{{ comp_pb.score__max }}</p>
+            <p class="card-text">{{ comp_pb.qual_score__max }}</p>
           </div>
         </div>
 
         <div class="card ms-3" style="width: 8rem;">
           <div class="card-body">
             <h5 class="card-title">Avg. Top 3</h5>
-            <p class="card-text">{{ comp_top3_avg.score__avg|floatformat:2 }}</p>
+            <p class="card-text">{{ comp_top3_avg.qual_score__avg|floatformat:2 }}</p>
           </div>
         </div>
       </div>
@@ -102,7 +102,8 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                      suggestedMin: 600,
+                      suggestedMax: 650,
                     }
                 }
             }
@@ -115,7 +116,7 @@
         labels: [{% for comp_date in comp_dates %}"{{ comp_date }}",{% endfor %}],
             datasets: [{
                 label: "Scores",
-                data: [{% for comp_score in comp_scores %}{{ comp_score }},{% endfor %}],
+                data: [{% for qual_score in qual_scores %}{{ qual_score }},{% endfor %}],
                 backgroundColor: ['rgba(7, 7, 7, 1)'],
                 borderColor: ['rgba(7, 7, 7, 1)'],
                 borderWidth: 3
@@ -139,10 +140,11 @@
                 }
             },
             scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+              y: {
+                suggestedMin: 600,
+                suggestedMax: 650,
+              }
+          }
         }
     };
 
@@ -165,8 +167,7 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10.0</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_zero__avg }} %</p>
+              <p class="card-text">{{ training_data_avgs.ten_zero__avg|floatformat:2 }} %</p>
             </div>
           </div>
         </div>
@@ -175,8 +176,7 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10a.0</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_azero__avg }} %</p>
+              <p class="card-text">{{ training_data_avgs.ten_azero__avg|floatformat:2 }} %</p>
             </div>
           </div>
         </div>
@@ -185,8 +185,7 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10.5</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_five__avg }} %</p>
+              <p class="card-text">{{ training_data_avgs.ten_five__avg|floatformat:2 }} %</p>
             </div>
           </div>
         </div>
@@ -195,8 +194,7 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">10a.5</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{{ training_data_avgs.ten_azero__avg }} %</p>
+              <p class="card-text">{{ training_data_avgs.ten_azero__avg|floatformat:2 }} %</p>
             </div>
           </div>
         </div>
@@ -205,7 +203,6 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">T</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Aiming Time</h6>
               <p class="card-text">{{ training_data_avgs.aiming_time__avg|floatformat:2 }}</p>
             </div>
           </div>
@@ -215,7 +212,6 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">S1</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Trace</h6>
               <p class="card-text">{{ training_data_avgs.s1__avg|floatformat:2 }}</p>
             </div>
           </div>
@@ -225,7 +221,6 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">S2</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
               <p class="card-text">{{ training_data_avgs.s2__avg|floatformat:2 }}</p>
             </div>
           </div>
@@ -235,7 +230,6 @@
           <div class="card" style="width: 8rem;">
             <div class="card-body">
               <h5 class="card-title">DA</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
               <p class="card-text">{{ training_data_avgs.da__avg|floatformat:2 }}</p>
             </div>
           </div>
@@ -291,10 +285,11 @@
                   }
               },
               scales: {
-                  y: {
-                      beginAtZero: true
-                  }
-              }
+                y: {
+                  suggestedMin: 70,
+                  suggestedMax: 100,
+                }
+            }
           }
       };
 
@@ -335,10 +330,11 @@
               }
           },
           scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
+            y: {
+              suggestedMin: 70,
+              suggestedMax: 100,
+            }
+        }
       }
   };
 
