@@ -4,3 +4,4 @@ black
 ruff
 pyupgrade
 mypy
+faker
