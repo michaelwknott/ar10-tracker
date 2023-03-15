@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from import_export.admin import ImportExportModelAdmin
 
 from .forms import CustomUserCreationForm, CutomUserChangeForm
 from .models import CompetitionData, CustomUser, TrainingData
+from .resources import CompetitionDataResource, TrainingDataResource
 
 
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CutomUserChangeForm
@@ -45,6 +48,11 @@ class CustomUserAdmin(UserAdmin):
     ordering = ("email",)
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(CompetitionData)
-admin.site.register(TrainingData)
+@admin.register(CompetitionData)
+class CompetitionDataAdmin(ImportExportModelAdmin):
+    resource_classes = [CompetitionDataResource]
+
+
+@admin.register(TrainingData)
+class TrainingDataAdmin(ImportExportModelAdmin):
+    resource_classes = [TrainingDataResource]
