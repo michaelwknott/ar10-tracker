@@ -13,8 +13,6 @@
                 <th scope="col">Date</th>
                 <th scope="col">Match Number</th>
                 <th scope="col">Qualification Score</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
 
@@ -26,8 +24,8 @@
                 <td>{{ data.match_number }}</td>
                 <td>{{ data.qual_score }}</td>
                 {% if data.user == request.user %}
-                <td><a type="button" class="btn" href="{% url 'record:competition_data_edit' pk=data.pk %}" role="button">Edit  </a></td>
-                <td><a type="button" class="btn" href="{% url 'record:competition_data_delete' pk=data.pk %}" role="button">Delete</a></td>
+                <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'record:competition_data_edit' pk=data.pk %}" role="button">Edit</a>
+                <a type="button" class="btn btn-outline-danger btn-sm" href="{% url 'record:competition_data_delete' pk=data.pk %}" role="button">Delete</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

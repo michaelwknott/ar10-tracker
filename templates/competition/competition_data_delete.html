@@ -7,7 +7,7 @@
 <form method="POST">
     {% csrf_token %}
     <input class="btn btn-danger" type="submit" value="Delete">
-    <a type="button" class="btn" href="{% url 'record:competition_data_list' %}">Go back</a>
+    <a type="button" class="btn btn-outline-secondary" href="{% url 'record:competition_data_list' %}">Go back</a>
 </form>
 </div>
 {% endblock %}
