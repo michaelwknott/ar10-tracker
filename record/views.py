@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Avg, Max
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -97,7 +98,12 @@ def dashboard(request):
 def training_data_list(request):
     training_data = TrainingData.objects.all()
     training_data = training_data.filter(user=request.user)
-    context = {"training_data": training_data}
+    paginator = Paginator(training_data, 20)
+
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
+
+    context = {"training_data_page_obj": page_object}
 
     return render(request, "training/training_data_list.html", context)
 
@@ -161,8 +167,12 @@ def training_data_delete(request, pk):
 def competition_data_list(request):
     competition_data = CompetitionData.objects.all()
     competition_data = competition_data.filter(user=request.user)
+    paginator = Paginator(competition_data, 20)
 
-    context = {"competition_data": competition_data}
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
+
+    context = {"competition_data_page_obj": page_object}
 
     return render(request, "competition/competition_data_list.html", context)
 

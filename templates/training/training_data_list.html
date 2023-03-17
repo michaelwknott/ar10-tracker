@@ -26,7 +26,7 @@
         </thead>
 
         <tbody>
-            {% for data in training_data %}
+            {% for data in training_data_page_obj %}
             <tr>
                 <td>{{ data.date }}</td>
                 <td>{{ data.number_shots }}</td>
@@ -47,7 +47,24 @@
                 {% endif %}
             </tr>
             {% endfor %}
+                </span>
+            </div>
         </tbody>
     </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if training_data_page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ training_data_page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ training_data_page_obj.number }} of {{ training_data_page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if training_data_page_obj.has_next %}
+                <a href="?page={{ training_data_page_obj.next_page_number }}">next</a>
+                <a href="?page={{ training_data_page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
 </div>
 {% endblock content %}
