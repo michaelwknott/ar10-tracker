@@ -17,7 +17,7 @@
     </div>
 </section>
 
-<section class"custom-score-overview">
+<section class="custom-score-overview">
   <div class="container mt-2">
     <div class="row">
       <div class="col">
@@ -29,14 +29,14 @@
     </div>
     <div class="row">
       <div class="col d-flex justify-content-start">
-        <div class="card me-3" style="width: 8rem;">
+        <div class="card me-3" style="width: 9rem;">
           <div class="card-body">
             <h5 class="card-title">PB</h5>
             <p class="card-text">{{ training_pb.score__max }}</p>
           </div>
         </div>
 
-        <div class="card ms-3" style="width: 8rem;">
+        <div class="card ms-3" style="width: 9rem;">
           <div class="card-body">
             <h5 class="card-title">Avg. Top 3</h5>
             <p class="card-text">{{ training_top3_avg.score__avg|floatformat:2 }}</p>
@@ -45,14 +45,14 @@
       </div>
 
       <div class="col d-flex justify-content-start">
-        <div class="card me-3" style="width: 8rem;">
+        <div class="card me-3" style="width: 9rem;">
           <div class="card-body">
             <h5 class="card-title">PB</h5>
             <p class="card-text">{{ comp_pb.qual_score__max }}</p>
           </div>
         </div>
 
-        <div class="card ms-3" style="width: 8rem;">
+        <div class="card ms-3" style="width: 9rem;">
           <div class="card-body">
             <h5 class="card-title">Avg. Top 3</h5>
             <p class="card-text">{{ comp_top3_avg.qual_score__avg|floatformat:2 }}</p>
@@ -159,39 +159,33 @@
 <section class="custom-scatt-overview">
   <div class="container mt-4">
     <div class="row">
-      <div class="col">
+      <div class="col d-flex justify-content-start">
         <h1 class="h4 text-muted mb-3">SCATT</h1>
     </div>
     <div class="row">
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+        <div class="col d-flex justify-content-center">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">10.0</h5>
               <p class="card-text">{{ training_data_avgs.ten_zero__avg|floatformat:2 }} %</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">10a.0</h5>
               <p class="card-text">{{ training_data_avgs.ten_azero__avg|floatformat:2 }} %</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">10.5</h5>
               <p class="card-text">{{ training_data_avgs.ten_five__avg|floatformat:2 }} %</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">10a.5</h5>
               <p class="card-text">{{ training_data_avgs.ten_azero__avg|floatformat:2 }} %</p>
@@ -199,35 +193,29 @@
           </div>
         </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+        <div class="col d-flex justify-content-center">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">T</h5>
               <p class="card-text">{{ training_data_avgs.aiming_time__avg|floatformat:2 }}</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">S1</h5>
               <p class="card-text">{{ training_data_avgs.s1__avg|floatformat:2 }}</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">S2</h5>
               <p class="card-text">{{ training_data_avgs.s2__avg|floatformat:2 }}</p>
             </div>
           </div>
-        </div>
 
-        <div class="col">
-          <div class="card" style="width: 8rem;">
+          <div class="card mx-2" style="width: 7rem;">
             <div class="card-body">
               <h5 class="card-title">DA</h5>
               <p class="card-text">{{ training_data_avgs.da__avg|floatformat:2 }}</p>
