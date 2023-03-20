@@ -1,15 +1,10 @@
 # ar10-tracker
 A web app to collect, store and visualise 10m Air Rifle Training and Competition Data.
 
-## Proposal
-10m Air Rifle athletes on the Troops2Target (T2T) programme are collecting training and competition data to monitor and track performance improvement. This data is required to support performance planning and report on progress to T2T management to maintain their place on the T2T programme.
-Currently, each athlete is utilising a separate system which results in a disjointed approach to collecting and sharing data.
+The web app provides the following functionality:
++ Create, Read, Update and Delete 10m Air Rifle Competition and Training data
++ View a summary of the Competition and Training data in the main dashboard
++ Import and export data in csv format for compatibility with existing data analysis workflows
 
-Athletes need to record:
-+ competition performance (competition type, score, rank)
-+ training competition performance (score)
-+ training (SCATT) data.
-
-## Solution
-Create a web application to collect, store and report competition and training data.
-+ Django
+## Tech
+The project utlises Django, Postgres, Bootstrap5 and Chart.js
