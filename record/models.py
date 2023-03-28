@@ -31,7 +31,7 @@ class CompetitionData(models.Model):
 
     class Meta:
         verbose_name_plural = "competition data"
-        ordering = ["-date"]
+        ordering = ["date"]
 
 
 class TrainingData(models.Model):
@@ -57,4 +57,4 @@ class TrainingData(models.Model):
 
     class Meta:
         verbose_name_plural = "training data"
-        ordering = ["-date"]
+        ordering = ["date"]
