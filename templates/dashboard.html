@@ -74,7 +74,7 @@
 
       <script>
         const data = {
-            labels: [{% for item in training_data %}"{{ item.date }}",{% endfor %}],
+            labels: [{% for item in training_data %}"{{ item.date }}"{% if not forloop.last %},{% endif %}{% endfor %}],
                 datasets: [{
                     label: "Scores",
                     data: [{% for item in training_data %}{{ item.score}},{% endfor %}],
@@ -113,7 +113,7 @@
 
 
     const data2 = {
-        labels: [{% for data in competition_data %}"{{ data.date }}",{% endfor %}],
+        labels: [{% for data in competition_data %}"{{ data.date }}"{% if not forloop.last %},{% endif %}{% endfor %}],
             datasets: [{
                 label: "Scores",
                 data: [{% for data in competition_data %}{{ data.qual_score }},{% endfor %}],
@@ -240,7 +240,7 @@
 
     <script>
       const data3 = {
-          labels: [{% for item in training_data %}"{{ item.date }}",{% endfor %}],
+          labels: [{% for item in training_data %}"{{ item.date }}"{% if not forloop.last %},{% endif %}{% endfor %}],
               datasets: [{
                   label: "10a0",
                   data: [{% for item in training_data %}{{ item.ten_azero }},{% endfor %}],
@@ -285,7 +285,7 @@
 
 
   const data4 = {
-      labels: [{% for item in training_data %}"{{ item.date }}",{% endfor %}],
+      labels: [{% for item in training_data %}"{{ item.date }}"{% if not forloop.last %},{% endif %}{% endfor %}],
           datasets: [{
               label: "10.0",
               data: [{% for item in training_data %}{{ item.ten_zero }},{% endfor %}],
