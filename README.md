@@ -79,8 +79,8 @@ python manage.py createsuperuser
 ```
 ## Roadmap
 
-- [ ] Add demo to README
+- [ ] Add demo to README.md
 - [ ] Add htmx to avoid fullpage reload on delete
 
 ## License
-Distributed under the MIT License. See LICENSE.txt for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
