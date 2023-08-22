@@ -83,7 +83,7 @@ python manage.py createsuperuser
 ```
 ## Roadmap
 
-- [ ] Add demo to README.md
+- [x] Add demo to README.md
 - [ ] Add htmx to avoid fullpage reload on delete
 
 ## License
