@@ -1,5 +1,9 @@
 # ar10-tracker
 
+## Demo
+
+https://github.com/michaelwknott/ar10-tracker/assets/17526532/654ecace-7bb7-406b-b948-b7c194b61b27
+
 ## About the Project
 A web app to collect, store and visualise 10m Air Rifle Training and Competition Data.
 
