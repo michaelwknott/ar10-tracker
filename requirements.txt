@@ -6,13 +6,17 @@
 #
 asgiref==3.6.0
     # via django
+brotli==1.1.0
+    # via whitenoise
+click==8.1.7
+    # via uvicorn
 defusedxml==0.7.1
     # via odfpy
 diff-match-patch==20200713
     # via django-import-export
 dj-database-url==1.2.0
     # via -r requirements.in
-django==4.1.6
+django==4.2.12
     # via
     #   -r requirements.in
     #   dj-database-url
@@ -23,12 +27,18 @@ django-widget-tweaks==1.4.12
     # via -r requirements.in
 et-xmlfile==1.1.0
     # via openpyxl
+gunicorn==22.0.0
+    # via -r requirements.in
+h11==0.14.0
+    # via uvicorn
 markuppy==1.14
     # via tablib
 odfpy==1.4.1
     # via tablib
 openpyxl==3.1.2
     # via tablib
+packaging==24.0
+    # via gunicorn
 psycopg2==2.9.5
     # via -r requirements.in
 python-decouple==3.7
@@ -39,6 +49,10 @@ sqlparse==0.4.3
     # via django
 tablib[html,ods,xls,xlsx,yaml]==3.3.0
     # via django-import-export
+uvicorn==0.29.0
+    # via -r requirements.in
+whitenoise[brotli]==6.6.0
+    # via -r requirements.in
 xlrd==2.0.1
     # via tablib
 xlwt==1.3.0
