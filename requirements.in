@@ -1,6 +1,9 @@
-django~=4.1
+django~=4.2
 psycopg2~=2.9
 python-decouple~=3.7
 dj-database-url~=1.2
 django-widget-tweaks~=1.4
 django-import-export~=3.1
+whitenoise[brotli]
+gunicorn
+uvicorn
